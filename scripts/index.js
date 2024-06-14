@@ -1,36 +1,28 @@
-"use strict" 
+"use strict"
 
 window.onload = () => {
 
-const createInfoForm = document.querySelector("#informationForm");
+    const createInfoForm = document.querySelector("#informationForm");
 
-createInfoForm.addEventListener("click", getInfo)
-
-
-}
-
-
-const getInfo = () => {
-event.preventDefault ();
-
-window.location.href = "./information.html"
-
-
-localStorage.setItem("name", name);
-localStorage.setItem("role", instructor)
-localStorage.setItem("role", student)
-
-//let valueFromLocalStorage = localStorage.getItem("name" , "instructor" , "student")
-
-if (localStorage.getItem("role") === "instructor") {
-
-
-    document.querySelector("#instructor").innerHTML += "Hi instructor," + localStorage.getItem("name")
-} else {
-
-    document.querySelector("#student").innerHTML += "Hi student," + localStorage.getItem("name")
-
-}
+    createInfoForm.addEventListener("submit", getInfo)
 
 
 }
+
+const getInfo = (event) => {
+
+    event.preventDefault();
+
+    let nameInput = document.querySelector("#name").value;
+
+    let role = document.querySelector('input[name="role"]:checked').value;
+
+
+    localStorage.setItem("name", nameInput)
+    localStorage.setItem("role", role)
+
+
+    window.location.href = "./information.html"
+
+}
+
